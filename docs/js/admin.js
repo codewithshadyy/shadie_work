@@ -34,14 +34,14 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     }
   } catch {
     // Demo fallback
-  //   if (user === 'shadie' && pass === 'shadie10') {
-  //     token = 'demo-token';
-  //     localStorage.setItem('adminToken', token);
-  //     initDashboard();
-  //   } else {
-  //     errorEl.textContent = 'Invalid credentials. ';
-  //     errorEl.classList.add('show');
-  //   }
+    // if (user === 'shadie' && pass === 'shadie10') {
+    //   token = 'demo-token';
+    //   localStorage.setItem('adminToken', token);
+    //   initDashboard();
+    // } else {
+    //   errorEl.textContent = 'Invalid credentials. ';
+    //   errorEl.classList.add('show');
+    // }
    }
 });
 
