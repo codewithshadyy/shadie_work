@@ -2,7 +2,7 @@
    SHADRACK KIPKOECH PORTFOLIO — Main JS
    ============================================================ */
 
-const API_BASE = "https://shadie10.onrender.com/";
+const API_BASE = "https://shadie10.onrender.com/api";
 
 // ─── Loader ──────────────────────────────────────────────
 window.addEventListener('load', () => {
