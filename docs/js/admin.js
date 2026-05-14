@@ -1,6 +1,6 @@
 
 
-const API = Process.env.API_URL;
+const API = "http://localhost:4900/api";
 let token = localStorage.getItem('adminToken');
 
 // ─── Auth ─────────────────────────────────────────────────
