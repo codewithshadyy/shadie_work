@@ -1,6 +1,6 @@
 
 
-const API = "http://localhost:4900/api";
+const API = "http://localhost:4646/api";
 let token = localStorage.getItem('adminToken');
 
 // ─── Auth ─────────────────────────────────────────────────
@@ -21,28 +21,28 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
       token = data.token;
       localStorage.setItem('adminToken', token);
       initDashboard();
-    } else {
-      // Demo mode login
-      if (user === 'shadie' && pass === 'shadie') {
-        token = 'demo-token';
-        localStorage.setItem('adminToken', token);
-        initDashboard();
-      } else {
-        errorEl.textContent = 'Invalid credentials.';
-        errorEl.classList.add('show');
-      }
+    // } else {
+    //   // Demo mode login
+    //   if (user === 'shadie' && pass === 'shadie') {
+    //     token = 'demo-token';
+    //     localStorage.setItem('adminToken', token);
+    //     initDashboard();
+    //   } else {
+    //     errorEl.textContent = 'Invalid credentials.';
+    //     errorEl.classList.add('show');
+    //   }
     }
   } catch {
     // Demo fallback
-    if (user === 'shadie' && pass === 'shadie10') {
-      token = 'demo-token';
-      localStorage.setItem('adminToken', token);
-      initDashboard();
-    } else {
-      errorEl.textContent = 'Invalid credentials. ';
-      errorEl.classList.add('show');
-    }
-  }
+  //   if (user === 'shadie' && pass === 'shadie10') {
+  //     token = 'demo-token';
+  //     localStorage.setItem('adminToken', token);
+  //     initDashboard();
+  //   } else {
+  //     errorEl.textContent = 'Invalid credentials. ';
+  //     errorEl.classList.add('show');
+  //   }
+   }
 });
 
 document.getElementById('logoutBtn')?.addEventListener('click', () => {
