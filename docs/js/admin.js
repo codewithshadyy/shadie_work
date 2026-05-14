@@ -1,6 +1,6 @@
 
 
-const API = "http://localhost:4646/api";
+const API = "http://localhost:4646";
 let token = localStorage.getItem('adminToken');
 
 // ─── Auth ─────────────────────────────────────────────────
@@ -11,7 +11,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
   const errorEl = document.getElementById('loginError');
   errorEl.classList.remove('show');
   try {
-    const res = await fetch(`${API}/auth/login`, {
+    const res = await fetch(`${API}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: user, password: pass }),
