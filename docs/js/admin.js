@@ -1,8 +1,6 @@
-/* ============================================================
-   ADMIN DASHBOARD — JS
-   ============================================================ */
 
-const API = 'http://localhost:5000/api';
+
+const API = Process.env.API_URL;
 let token = localStorage.getItem('adminToken');
 
 // ─── Auth ─────────────────────────────────────────────────
