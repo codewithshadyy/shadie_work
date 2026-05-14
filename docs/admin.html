@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — Shadrack Kipkoech Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/admin.css" />
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <div class="login-logo">{KS}</div>
+      <h2>Admin Access</h2>
+      <p>Secure</p>
+      <form id="loginForm">
+        <div class="admin-form-group">
+          <label>Username</label>
+          <input type="text" id="loginUser" placeholder="admin" />
+        </div>
+        <div class="admin-form-group">
+          <label>Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••" />
+        </div>
+        <div class="login-error" id="loginError"></div>
+        <button type="submit" class="admin-btn-primary w-100">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+      </form>
+      
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="dashboard" id="dashboard" style="display:none;">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">{KS}</div>
+        <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="sidebar-link active" data-section="overview"><i class="fas fa-chart-pie"></i> Overview</a>
+        <a class="sidebar-link" data-section="projects"><i class="fas fa-briefcase"></i> Projects</a>
+        <a class="sidebar-link" data-section="experience"><i class="fas fa-clock"></i> Experience</a>
+        <a class="sidebar-link" data-section="messages"><i class="fas fa-inbox"></i> Messages <span class="badge-count" id="msgBadge">0</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="./index.html" target="_blank" class="sidebar-link"><i class="fas fa-external-link-alt"></i> View Site</a>
+        <button class="sidebar-link logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Topbar -->
+      <header class="topbar">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-title" id="topbarTitle">Dashboard Overview</div>
+        <div class="topbar-user">
+          <div class="user-avatar">KS</div>
+          <span>Admin</span>
+        </div>
+      </header>
+
+      <!-- Sections -->
+
+      <!-- Overview -->
+      <section class="section-content" id="sec-overview">
+        <div class="admin-page-header">
+          <h1>Dashboard Overview</h1>
+          <p>Welcome back, shadrack. Here's your portfolio at a glance.</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-widget">
+            <div class="stat-icon blue"><i class="fas fa-briefcase"></i></div>
+            <div class="stat-info"><span class="stat-val" id="statProjects">—</span><span class="stat-lbl">Total Projects</span></div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-icon teal"><i class="fas fa-clock"></i></div>
+            <div class="stat-info"><span class="stat-val" id="statExp">—</span><span class="stat-lbl">Experiences</span></div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-icon amber"><i class="fas fa-inbox"></i></div>
+            <div class="stat-info"><span class="stat-val" id="statMsgs">—</span><span class="stat-lbl">Messages</span></div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-icon green"><i class="fas fa-star"></i></div>
+            <div class="stat-info"><span class="stat-val" id="statFeatured">—</span><span class="stat-lbl">Featured Projects</span></div>
+          </div>
+        </div>
+        <div class="quick-actions">
+          <h3>Quick Actions</h3>
+          <div class="action-grid">
+            <button class="action-btn" onclick="showSection('projects'); setTimeout(openProjectForm, 200)"><i class="fas fa-plus"></i> Add Project</button>
+            <button class="action-btn" onclick="showSection('experience'); setTimeout(openExpForm, 200)"><i class="fas fa-plus"></i> Add Experience</button>
+            <button class="action-btn" onclick="showSection('messages')"><i class="fas fa-inbox"></i> View Messages</button>
+            <a href="./index.html" target="_blank" class="action-btn"><i class="fas fa-eye"></i> Preview Site</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="section-content" id="sec-projects" style="display:none;">
+        <div class="admin-page-header">
+          <h1>Manage Projects</h1>
+          <button class="admin-btn-primary" onclick="openProjectForm()"><i class="fas fa-plus"></i> Add Project</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="projectsTable">
+            <thead>
+              <tr><th>Title</th><th>Category</th><th>Featured</th><th>Date</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="projectsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section class="section-content" id="sec-experience" style="display:none;">
+        <div class="admin-page-header">
+          <h1>Manage Experience</h1>
+          <button class="admin-btn-primary" onclick="openExpForm()"><i class="fas fa-plus"></i> Add Experience</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="expTable">
+            <thead>
+              <tr><th>Role</th><th>Company</th><th>Duration</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="expTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Messages -->
+      <section class="section-content" id="sec-messages" style="display:none;">
+        <div class="admin-page-header">
+          <h1>Inbox</h1>
+          <span class="admin-badge" id="unreadCount">0 unread</span>
+        </div>
+        <div class="messages-list" id="messagesList"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ── Modals ── -->
+
+  <!-- Project Form Modal -->
+  <div class="admin-modal" id="projectModal">
+    <div class="admin-modal-card" style="max-width:640px;">
+      <div class="admin-modal-header">
+        <h3 id="projectFormTitle">Add Project</h3>
+        <button onclick="closeProjectModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <form id="projectForm" class="admin-form">
+        <input type="hidden" id="projectId" />
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label>Title *</label>
+            <input type="text" id="pTitle" required />
+          </div>
+          <div class="admin-form-group">
+            <label>Category</label>
+            <select id="pCategory">
+              <option value="api">API</option>
+              <option value="backend">Backend</option>
+              <option value="fullstack">Full Stack</option>
+              <option value="database">Database</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label>Description *</label>
+          <textarea id="pDescription" rows="4" required></textarea>
+        </div>
+        <div class="admin-form-group">
+          <label>Image URL</label>
+          <input type="url" id="pImage" placeholder="https://..." />
+        </div>
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label>GitHub Link</label>
+            <input type="url" id="pGithub" placeholder="https://github.com/..." />
+          </div>
+          <div class="admin-form-group">
+            <label>Live Demo Link</label>
+            <input type="url" id="pLive" placeholder="https://..." />
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label>Tech Stack (comma-separated)</label>
+          <input type="text" id="pTech" placeholder="Python, Django, PostgreSQL" />
+        </div>
+        <div class="admin-form-group">
+          <label>Tags (comma-separated)</label>
+          <input type="text" id="pTags" placeholder="api, backend, fintech" />
+        </div>
+        <div class="admin-checkbox">
+          <input type="checkbox" id="pFeatured" />
+          <label for="pFeatured">Mark as Featured</label>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn-ghost" onclick="closeProjectModal()">Cancel</button>
+          <button type="submit" class="admin-btn-primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Experience Form Modal -->
+  <div class="admin-modal" id="expModal">
+    <div class="admin-modal-card" style="max-width:600px;">
+      <div class="admin-modal-header">
+        <h3 id="expFormTitle">Add Experience</h3>
+        <button onclick="closeExpModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <form id="expForm" class="admin-form">
+        <input type="hidden" id="expId" />
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label>Role *</label>
+            <input type="text" id="eRole" placeholder="Senior Backend Engineer" required />
+          </div>
+          <div class="admin-form-group">
+            <label>Company *</label>
+            <input type="text" id="eCompany" placeholder="Company Name · Full-time" required />
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label>Duration</label>
+          <input type="text" id="eDuration" placeholder="Jan 2023 – Present" />
+        </div>
+        <div class="admin-form-group">
+          <label>Responsibilities (one per line)</label>
+          <textarea id="eResponsibilities" rows="5" placeholder="Built RESTful APIs...&#10;Reduced latency by 65%..."></textarea>
+        </div>
+        <div class="admin-form-group">
+          <label>Technologies (comma-separated)</label>
+          <input type="text" id="eTech" placeholder="Python, Django, PostgreSQL" />
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn-ghost" onclick="closeExpModal()">Cancel</button>
+          <button type="submit" class="admin-btn-primary">Save Experience</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Message Modal -->
+  <div class="admin-modal" id="msgModal">
+    <div class="admin-modal-card" style="max-width:520px;">
+      <div class="admin-modal-header">
+        <h3>Message Details</h3>
+        <button onclick="closeMsgModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div id="msgContent" class="admin-form"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/admin.js"></script>
+</body>
+</html>

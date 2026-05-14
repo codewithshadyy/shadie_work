@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Backend Engineer | API Architect | System Design Enthusiast — Building scalable systems and elegant APIs." />
+  <meta name="keywords" content="backend engineer, API architect, system design, Python, Node.js, Django, Express" />
+  <title>shadrack kipkoech — Backend Engineer & API Architect</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: '#00E5C3',
+            accent2: '#FF6B35',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="dark" id="body">
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Page loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-inner">
+      <div class="loader-logo">shadrack</div>
+      <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+      <div class="loader-text">Initializing systems...</div>
+    </div>
+  </div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar-custom" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">{</span>
+        <span class="logo-name">Shadrack.k</span>
+        <span class="logo-bracket">}</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about" class="nav-link" data-text="About">About</a>
+        <a href="#skills" class="nav-link" data-text="Skills">Skills</a>
+        <a href="#projects" class="nav-link" data-text="Projects">Projects</a>
+        <a href="#experience" class="nav-link" data-text="Experience">Experience</a>
+        <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
+        <!-- <a href="/admin/index.html" class="nav-link admin-link" target="_blank">
+          <i class="fas fa-lock-open fa-xs"></i> Admin
+        </a> -->
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon sun"><i class="fas fa-sun"></i></span>
+          <span class="theme-icon moon"><i class="fas fa-moon"></i></span>
+        </button>
+        <button class="nav-cta" onclick="scrollToSection('contact')">Hire Me</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-section" id="hero">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Available for opportunities</span>
+      </div>
+
+      <div class="hero-intro">
+        <span class="hero-greeting">Hello, I'm</span>
+        <h1 class="hero-name">
+          <span class="name-line">Shadrack</span>
+          <span class="name-line accent-text">Kipkoech</span>
+        </h1>
+        <div class="hero-title-wrapper">
+          <span class="hero-title-prefix">I am a </span>
+          <span class="hero-title-typed" id="typedText"></span>
+          <span class="cursor-blink">|</span>
+        </div>
+        <p class="hero-bio">
+          I architect scalable backend systems and craft elegant APIs that power
+          exceptional digital experiences. From distributed systems to microservices —
+          I build infrastructure that scales.
+        </p>
+      </div>
+
+      <div class="hero-cta-group">
+        <button class="btn-primary-custom" onclick="scrollToSection('projects')">
+          <span>View Projects</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+        <button class="btn-secondary-custom" onclick="scrollToSection('contact')">
+          <span>Contact Me</span>
+        </button>
+        <a href="https://github.com/codewithshadyy/codewithshadyy" class="btn-ghost-custom" download>
+          <i class="fas fa-download"></i>
+          <span>Resume</span>
+        </a>
+      </div>
+
+      <div class="hero-social">
+        <a href="https://github.com/codewithshadyy" class="social-icon" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/shadrack-kipkoech-177a2b370" class="social-icon" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://twitter.com/shadrack26k" class="social-icon" target="_blank" aria-label="Twitter">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="mailto:shadrackkoeh@gmail" class="social-icon" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="avatar-container">
+        <div class="avatar-ring ring-1"></div>
+        <div class="avatar-ring ring-2"></div>
+        <div class="avatar-ring ring-3"></div>
+        <div class="avatar-frame">
+          <img src="https://api.dicebear.com/8.x/notionists/svg?seed=AlexOduya&backgroundColor=0d1117" alt="Shadrackkipkoech" class="avatar-img" />
+        </div>
+        <div class="floating-badge badge-python">
+          <i class="fab fa-python"></i> Python
+        </div>
+        <div class="floating-badge badge-node">
+          <i class="fab fa-node-js"></i> Node.js
+        </div>
+        <div class="floating-badge badge-db">
+          <i class="fas fa-database"></i> PostgreSQL
+        </div>
+        <div class="floating-badge badge-api">
+          <i class="fas fa-code"></i> REST APIs
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ========== TECH MARQUEE ========== -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-content" id="marquee1">
+        <span><i class="fab fa-python"></i> Python</span>
+        <span><i class="fab fa-node-js"></i> Node.js</span>
+        <span><i class="fas fa-server"></i> Django</span>
+        <span><i class="fas fa-bolt"></i> Express.js</span>
+        <span><i class="fas fa-database"></i> PostgreSQL</span>
+        <span><i class="fas fa-leaf"></i> MongoDB</span>
+        <span><i class="fas fa-shield"></i> JWT Auth</span>
+        <span><i class="fas fa-cloud"></i> AWS</span>
+        <span><i class="fab fa-docker"></i> Docker</span>
+        <span><i class="fas fa-sitemap"></i> System Design</span>
+        <span><i class="fas fa-key"></i> API Security</span>
+        <span><i class="fas fa-project-diagram"></i> Microservices</span>
+        <span><i class="fab fa-git-alt"></i> Git</span>
+        <span><i class="fas fa-cubes"></i> REST APIs</span>
+        <span><i class="fas fa-layer-group"></i> DRF</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span><i class="fab fa-python"></i> Python</span>
+        <span><i class="fab fa-node-js"></i> Node.js</span>
+        <span><i class="fas fa-server"></i> Django</span>
+        <span><i class="fas fa-bolt"></i> Express.js</span>
+        <span><i class="fas fa-database"></i> PostgreSQL</span>
+        <span><i class="fas fa-leaf"></i> MongoDB</span>
+        <span><i class="fas fa-shield"></i> JWT Auth</span>
+        <span><i class="fas fa-cloud"></i> AWS</span>
+        <span><i class="fab fa-docker"></i> Docker</span>
+        <span><i class="fas fa-sitemap"></i> System Design</span>
+        <span><i class="fas fa-key"></i> API Security</span>
+        <span><i class="fas fa-project-diagram"></i> Microservices</span>
+        <span><i class="fab fa-git-alt"></i> Git</span>
+        <span><i class="fas fa-cubes"></i> REST APIs</span>
+        <span><i class="fas fa-layer-group"></i> DRF</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="section about-section" id="about">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">// 01. About</span>
+        <h2 class="section-title">The Engineer <em>Behind</em> the Systems</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text" data-aos="fade-right">
+          <p class="about-lead">
+            I don't just write code — I design systems that think ahead.
+          </p>
+          <p class="about-body">
+            With a deep passion for backend engineering, I specialize in building APIs that scale,
+            databases that perform, and architectures that stand the test of time. My approach
+            combines engineering rigour with product thinking — because great software isn't just
+            technically sound, it solves real problems elegantly.
+          </p>
+          <p class="about-body">
+            I believe in <strong>security by default</strong>, <strong>performance as a feature</strong>,
+            and <strong>documentation as respect</strong> for other engineers. Every system I build
+            is designed to be maintainable, observable, and ready to scale.
+          </p>
+
+          <div class="about-philosophy">
+            <div class="philosophy-item">
+              <span class="philosophy-icon"><i class="fas fa-layer-group"></i></span>
+              <div>
+                <strong>Clean Architecture</strong>
+                <p>Separation of concerns, SOLID principles, DRY code that speaks for itself.</p>
+              </div>
+            </div>
+            <div class="philosophy-item">
+              <span class="philosophy-icon"><i class="fas fa-shield-halved"></i></span>
+              <div>
+                <strong>Security First</strong>
+                <p>Auth, validation, rate limiting — built in from day one, not bolted on later.</p>
+              </div>
+            </div>
+            <div class="philosophy-item">
+              <span class="philosophy-icon"><i class="fas fa-gauge-high"></i></span>
+              <div>
+                <strong>Performance Obsessed</strong>
+                <p>Query optimization, caching strategies, and async patterns that keep things fast.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-stats" data-aos="fade-left">
+          <div class="stat-card">
+            <div class="stat-number" data-count="3">0</div>
+            <div class="stat-label">Years Experience</div>
+            <div class="stat-sub">Building production systems</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="4">0</div>
+            <div class="stat-label">Projects Completed</div>
+            <div class="stat-sub">APIs, platforms & services</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="10">0</div>
+            <div class="stat-label">Technologies</div>
+            <div class="stat-sub">Languages, frameworks & tools</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="99">0</div>
+            <div class="stat-label">% Uptime Target</div>
+            <div class="stat-sub">SLO-driven reliability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section class="section skills-section" id="skills">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">// 02. Skills</span>
+        <h2 class="section-title">Technical <em>Expertise</em></h2>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Core Skills -->
+        <div class="skills-category" data-aos="fade-up" data-aos-delay="0">
+          <div class="category-header">
+            <i class="fas fa-brain"></i>
+            <h3>Core Competencies</h3>
+          </div>
+          <div class="core-skills-list">
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>System Design</span><span class="skill-pct">95%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>API Architecture</span><span class="skill-pct">92%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>Backend Engineering</span><span class="skill-pct">90%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>API Security</span><span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>Database Architecture</span><span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>Performance Optimization</span><span class="skill-pct">82%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Stack Cards -->
+        <div class="skills-tech-grid" data-aos="fade-up" data-aos-delay="100">
+          <div class="tech-card" data-tooltip="Primary language for backend & ML">
+            <div class="tech-icon python-icon"><i class="fab fa-python"></i></div>
+            <span class="tech-name">Python</span>
+            <span class="tech-level">Advanced</span>
+          </div>
+          <div class="tech-card" data-tooltip="Runtime for server-side JS">
+            <div class="tech-icon node-icon"><i class="fab fa-node-js"></i></div>
+            <span class="tech-name">JavaScript</span>
+            <span class="tech-level">Advanced</span>
+          </div>
+          <div class="tech-card" data-tooltip="Batteries-included Python framework">
+            <div class="tech-icon django-icon"><i class="fas fa-server"></i></div>
+            <span class="tech-name">Django</span>
+            <span class="tech-level">Expert</span>
+          </div>
+          <div class="tech-card" data-tooltip="REST API framework for Django">
+            <div class="tech-icon drf-icon"><i class="fas fa-layer-group"></i></div>
+            <span class="tech-name">DRF</span>
+            <span class="tech-level">Expert</span>
+          </div>
+          <div class="tech-card" data-tooltip="Minimal Node.js web framework">
+            <div class="tech-icon express-icon"><i class="fas fa-bolt"></i></div>
+            <span class="tech-name">Express.js</span>
+            <span class="tech-level">Advanced</span>
+          </div>
+          <div class="tech-card" data-tooltip="Relational database of choice">
+            <div class="tech-icon pg-icon"><i class="fas fa-database"></i></div>
+            <span class="tech-name">PostgreSQL</span>
+            <span class="tech-level">Advanced</span>
+          </div>
+          <div class="tech-card" data-tooltip="NoSQL document database">
+            <div class="tech-icon mongo-icon"><i class="fas fa-leaf"></i></div>
+            <span class="tech-name">MongoDB</span>
+            <span class="tech-level">Proficient</span>
+          </div>
+          
+          <div class="tech-card" data-tooltip="Container platform">
+            <div class="tech-icon docker-icon"><i class="fab fa-docker"></i></div>
+            <span class="tech-name">Docker</span>
+            <span class="tech-level">Intermediate</span>
+          </div>
+          <div class="tech-card" data-tooltip="Secure token authentication">
+            <div class="tech-icon jwt-icon"><i class="fas fa-key"></i></div>
+            <span class="tech-name">JWT Auth</span>
+            <span class="tech-level">Expert</span>
+          </div>
+          <div class="tech-card" data-tooltip="RESTful API design patterns">
+            <div class="tech-icon api-icon"><i class="fas fa-network-wired"></i></div>
+            <span class="tech-name">REST APIs</span>
+            <span class="tech-level">Expert</span>
+          </div>
+          <div class="tech-card" data-tooltip="Cloud infrastructure & services">
+            <div class="tech-icon aws-icon"><i class="fab fa-aws"></i></div>
+            <span class="tech-name">AWS</span>
+            <span class="tech-level">Intermediate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section class="section projects-section" id="projects">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">// 03. Projects</span>
+        <h2 class="section-title">Featured <em>Work</em></h2>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="projects-toolbar">
+        <div class="filter-chips" id="filterChips">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="api">API</button>
+          <button class="filter-chip" data-filter="backend">Backend</button>
+          <button class="filter-chip" data-filter="fullstack">Full Stack</button>
+          <button class="filter-chip" data-filter="database">Database</button>
+        </div>
+        <div class="search-input-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" id="projectSearch" placeholder="Search projects..." class="search-input" />
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Skeleton loaders -->
+        <div class="project-skeleton"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+        <div class="project-skeleton"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+        <div class="project-skeleton"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+      </div>
+
+      <div class="projects-empty" id="projectsEmpty" style="display:none;">
+        <i class="fas fa-folder-open"></i>
+        <p>No projects match your search.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Modal -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- ========== EXPERIENCE ========== -->
+  <section class="section experience-section" id="experience">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">// 04. Experience</span>
+        <h2 class="section-title">Career <em>Journey</em></h2>
+      </div>
+
+      <div class="timeline" id="experienceTimeline">
+        <!-- Skeleton -->
+        <div class="timeline-skeleton">
+          <div class="tl-sk-dot"></div>
+          <div class="tl-sk-card"><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section testimonials-section" id="testimonials">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">// 05. Testimonials</span>
+        <h2 class="section-title">What People <em>Say</em></h2>
+      </div>
+
+      <div class="testimonials-carousel" id="testimonialsCarousel">
+        
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"The REST API he designed for our SaaS platform became the backbone of everything. Thoughtful design, great documentation, and zero downtime in 2 years."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SR</div>
+            <div>
+              <strong>Sarah Rahman</strong>
+              <span>Founder, BuildStack</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Working with shadrack on our database migration was a game-changer. He refactored a chaotic schema into something elegant, cutting query times by 70%."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">DK</div>
+            <div>
+              <strong>David Kariuki</strong>
+              <span>Lead Engineer, DataSync</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section contact-section" id="contact">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">// 06. Contact</span>
+        <h2 class="section-title">Let's <em>Collaborate</em></h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <p class="contact-tagline">Open to backend roles, API consulting, and system architecture projects.</p>
+
+          <div class="contact-cards">
+            <div class="contact-card">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <span>Email</span>
+                <a href="mailto:shadrackkoeh@gmail.com">shadrackkoeh@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-card">
+              <i class="fab fa-linkedin"></i>
+              <div>
+                <span>LinkedIn</span>
+                <a href="https://linkedin.com/shadrack-kipkoech-177a2b370" target="_blank">linkedin.com/shadrack kipkoech</a>
+              </div>
+            </div>
+            <div class="contact-card">
+              <i class="fab fa-github"></i>
+              <div>
+                <span>GitHub</span>
+                <a href="https://github.com/codewithshadyy" target="_blank">github.com/kipkoech shadrack</a>
+              </div>
+            </div>
+            <div class="contact-card">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <span>Location</span>
+                <span>Nairobi, Kenya 🇰🇪</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="availability-badge">
+            <div class="avail-dot"></div>
+            <span>Available for new projects — Let's build something great</span>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap" data-aos="fade-left">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" name="name" placeholder="codewithshadyy" required />
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="james@gmail.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Phone (optional)</label>
+                <input type="tel" name="phone" placeholder="+254 700 000 000" />
+              </div>
+              <div class="form-group">
+                <label>Project Type</label>
+                <select name="projectType">
+                  <option value="">Select type...</option>
+                  <option>API Development</option>
+                  <option>System Design Consultation</option>
+                  <option>Database Architecture</option>
+                  <option>Code Review / Audit</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Budget Range</label>
+              <select name="budget">
+                <option value="">Select budget...</option>
+                <option>$100 – $500</option>
+                <option>$500 – $1,000</option>
+                <option>$1,000 – $5,000</option>
+                <option>$5,000+</option>
+                <option>Open to discuss</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Your Message</label>
+              <textarea name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+            </div>
+            <div class="form-checkbox">
+              <input type="checkbox" id="collab" name="collaboration" />
+              <label for="collab">I'm interested in long-term collaboration</label>
+            </div>
+            <button type="submit" class="btn-primary-custom w-full" id="submitBtn">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+            <div class="form-status" id="formStatus"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo">
+            <span class="logo-bracket">{</span>
+            <span class="logo-name"></span>
+            <span class="logo-bracket">}</span>
+          </a>
+          <p>Backend Engineer crafting scalable APIs and robust distributed systems.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Navigation</h4>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <a href="https://github.com/codewithshadyy" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/shadrack-kipkoech-177a2b370" target="_blank">LinkedIn</a>
+            <a href="https://twitter.com/shadrack26k" target="_blank">Twitter / X</a>
+            <a href="mailto:shadrackkoeh@gmail.com">Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 codewithshadyy — Built with passion & precision in Nairobi 🇰🇪</p>
+        <div class="footer-social">
+          <a href="https://github.com/codewithshadyy" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/shadrack-kipkoech-177a2b370" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/shadrack26k" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button -->
+  <button class="fab" id="scrollTopBtn" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Command Palette -->
+  <div class="cmd-overlay" id="cmdOverlay">
+    <div class="cmd-palette">
+      <div class="cmd-header">
+        <i class="fas fa-terminal"></i>
+        <input type="text" id="cmdInput" placeholder="Type a command or section..." />
+        <kbd>ESC</kbd>
+      </div>
+      <div class="cmd-results" id="cmdResults"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
