@@ -2,7 +2,7 @@
    SHADRACK KIPKOECH PORTFOLIO — Main JS
    ============================================================ */
 
-const API_BASE = "http://localhost:4646/api";
+const API_BASE = "http://localhost:4646";
 
 // ─── Loader ──────────────────────────────────────────────
 window.addEventListener('load', () => {
