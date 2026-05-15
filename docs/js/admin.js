@@ -62,7 +62,7 @@ function initDashboard() {
 }
 
 // Auto-login if token exists
-if (token) initDashboard();
+// if (token) initDashboard();
 
 // ─── Navigation ───────────────────────────────────────────
 const sections = { overview: 'Overview', projects: 'Manage Projects', experience: 'Experience', messages: 'Inbox' };
