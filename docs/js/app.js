@@ -216,7 +216,7 @@ if (skillsSection) {
 let allProjects = [];
 async function fetchProjects() {
   try {
-    const res = await fetch(`${API_BASE}/projects`);
+    const res = await fetch(`${API_BASE}/projects/`);
     const data = await res.json();
     allProjects = data.projects || data || [];
     renderProjects(allProjects);
