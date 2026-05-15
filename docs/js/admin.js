@@ -360,7 +360,7 @@ function getApiBase() {
   return 'http://localhost:5000/api';
 }
 
-const API = getApiBase();
+const API = "https://shadie10.onrender.com/api";
 console.log('[Admin] API base:', API);
 
 // ─── 2. TOKEN MANAGEMENT ─────────────────────────────────────
