@@ -112,6 +112,7 @@ let projects;
 
 // ─── Overview ─────────────────────────────────────────────
 async function loadOverview() {
+  let projects;
   document.getElementById('statProjects').textContent = projects.length;
   document.getElementById('statExp').textContent = experiences.length;
   document.getElementById('statMsgs').textContent = messages.length;
@@ -125,6 +126,7 @@ async function loadOverview() {
 
 // ─── Projects Table ───────────────────────────────────────
 function loadProjectsTable() {
+  let projects;
   const tbody = document.getElementById('projectsTableBody');
   if (!projects.length) {
     tbody.innerHTML = `<tr><td colspan="5"><div class="admin-empty"><i class="fas fa-briefcase"></i><p>No projects yet. Add your first project!</p></div></td></tr>`;
