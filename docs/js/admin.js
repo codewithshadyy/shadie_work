@@ -94,7 +94,10 @@ document.getElementById('sidebarClose')?.addEventListener('click', () => {
   document.getElementById('sidebar').classList.remove('open');
 });
 
+
+let projects;
 // ─── Sample Data (when API unavailable) ───────────────────
+
 // let projects = [
 //   { _id: '1', title: 'MicroAuth Service', category: 'backend', description: 'JWT authentication microservice.', techStack: ['Node.js', 'Express', 'MongoDB'], tags: ['auth'], githubLink: 'https://github.com', liveLink: '', featured: true, imageUrl: 'https://picsum.photos/seed/auth2/600/400', createdAt: '2024-02-20' },
 //   ];
