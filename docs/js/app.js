@@ -428,7 +428,7 @@ document.getElementById('contactForm')?.addEventListener('submit', async (e) => 
     collaboration: form.collaboration?.checked,
   };
   try {
-    const res = await fetch(`${API_BASE}/contact`, {
+    const res = await fetch(`${API}/contact/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
@@ -442,7 +442,7 @@ document.getElementById('contactForm')?.addEventListener('submit', async (e) => 
     }
   } catch {
     status.className = 'form-status success';
-    status.textContent = '✓ Message received! ';
+    status.textContent = '✓ Message not sent! ';
     form.reset();
   }
   btn.disabled = false;
