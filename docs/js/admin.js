@@ -787,7 +787,7 @@ document.getElementById('expForm')?.addEventListener('submit', async (e) => {
 // ─── Messages — Fetch ─────────────────────────────────────
 async function fetchMessages() {
   try {
-    const data = await apiFetch('/messages');
+    const data = await apiFetch('/contact');
     messages = Array.isArray(data) ? data : (data?.messages ?? data?.data ?? []);
     loadMessages();
   } catch (err) {
@@ -824,7 +824,7 @@ async function openMsg(id) {
   // Mark as read on the server if not already
   if (!m.read) {
     try {
-      await apiFetch(`/messages/${id}/read`, { method: 'PATCH' });
+      await apiFetch(`/contact/${id}/read`, { method: 'PATCH' });
       m.read = true;
     } catch {
       // Non-critical — still show message even if marking read fails
@@ -852,7 +852,7 @@ async function openMsg(id) {
 async function deleteMessage(id) {
   if (!confirm('Delete this message?')) return;
   try {
-    await apiFetch(`/messages/${id}`, { method: 'DELETE' });
+    await apiFetch(`/contact/${id}`, { method: 'DELETE' });
     messages = messages.filter(m => m._id !== id);
     closeMsgModal();
     loadMessages();
