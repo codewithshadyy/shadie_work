@@ -396,22 +396,70 @@ const sections = {
 };
 
 // ─── API Helper ───────────────────────────────────────────
+// async function apiFetch(path, options = {}) {
+//   const headers = { 'Content-Type': 'application/json' };
+//   if (token) headers['Authorization'] = `Bearer ${token}`;
+//   const res = await fetch(`${API}${path}`, { ...options, headers: { ...headers, ...options.headers } });
+//   if (res.status === 401) {
+//     handleUnauthorized();
+//     throw new Error('Unauthorized');
+//   }
+//   if (!res.ok) {
+//     const err = await res.json().catch(() => ({ message: res.statusText }));
+//     throw new Error(err.message || `Request failed: ${res.status}`);
+//   }
+//   // 204 No Content
+//   if (res.status === 204) return null;
+//   return res.json();
+// }
+
+
 async function apiFetch(path, options = {}) {
-  const headers = { 'Content-Type': 'application/json' };
-  if (token) headers['Authorization'] = `Bearer ${token}`;
-  const res = await fetch(`${API}${path}`, { ...options, headers: { ...headers, ...options.headers } });
+
+  const cleanPath = path.startsWith('/')
+    ? path
+    : `/${path}`;
+
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(options.headers || {})
+  };
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  const res = await fetch(`${API}${cleanPath}`, {
+    ...options,
+    headers
+  });
+
   if (res.status === 401) {
     handleUnauthorized();
     throw new Error('Unauthorized');
   }
+
   if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: res.statusText }));
-    throw new Error(err.message || `Request failed: ${res.status}`);
+
+    let err = {
+      message: `Request failed: ${res.status}`
+    };
+
+    try {
+      err = await res.json();
+    } catch {}
+
+    throw new Error(err.message);
   }
-  // 204 No Content
+
   if (res.status === 204) return null;
+
   return res.json();
 }
+
+
+
+
 
 function handleUnauthorized() {
   localStorage.removeItem('adminToken');
@@ -767,7 +815,7 @@ document.getElementById('expForm')?.addEventListener('submit', async (e) => {
       const idx = experiences.findIndex(e => e._id === editingExpId);
       if (idx > -1) experiences[idx] = updated?.experience ?? updated;
     } else {
-      const created = await apiFetch('/experiences', {
+      const created = await apiFetch('/experiences/', {
         method: 'POST',
         body: JSON.stringify(payload),
       });
