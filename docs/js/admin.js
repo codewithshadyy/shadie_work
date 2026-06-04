@@ -767,7 +767,7 @@ document.getElementById('expForm')?.addEventListener('submit', async (e) => {
       const idx = experiences.findIndex(e => e._id === editingExpId);
       if (idx > -1) experiences[idx] = updated?.experience ?? updated;
     } else {
-      const created = await apiFetch('/experiences/', {
+      const created = await apiFetch('/experiences', {
         method: 'POST',
         body: JSON.stringify(payload),
       });
