@@ -410,44 +410,111 @@ function getSampleExperiences() {
 
 fetchExperience();
 
-// ─── Contact Form ─────────────────────────────────────────
-document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  const status = document.getElementById('formStatus');
-  const form = e.target;
-  btn.disabled = true;
-  btn.querySelector('span').textContent = 'Sending...';
-  const body = {
-    name: form.name.value,
-    email: form.email.value,
-    phone: form.phone?.value,
-    projectType: form.projectType?.value,
-    budget: form.budget?.value,
-    message: form.message.value,
-    collaboration: form.collaboration?.checked,
-  };
-  try {
-    const res = await fetch(`${API}/contact/`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-    if (res.ok) {
-      status.className = 'form-status success';
-      status.textContent = '✓ Message sent! I\'ll get back to you within 24 hours.';
-      form.reset();
-    } else {
-      throw new Error('Server error');
-    }
-  } catch {
-    status.className = 'form-status success';
-    status.textContent = '✓ Message not sent! ';
-    form.reset();
+// // ─── Contact Form ─────────────────────────────────────────
+// document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+//   e.preventDefault();
+//   const btn = document.getElementById('submitBtn');
+//   const status = document.getElementById('formStatus');
+//   const form = e.target;
+//   btn.disabled = true;
+//   btn.querySelector('span').textContent = 'Sending...';
+//   const body = {
+//     name: form.name.value,
+//     email: form.email.value,
+//     phone: form.phone?.value,
+//     projectType: form.projectType?.value,
+//     budget: form.budget?.value,
+//     message: form.message.value,
+//     collaboration: form.collaboration?.checked,
+//   };
+//   try {
+//     const res = await fetch(`${API}/contact`, {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(body),
+//     });
+//     if (res.ok) {
+//       status.className = 'form-status success';
+//       status.textContent = '✓ Message sent! I\'ll get back to you within 24 hours.';
+//       form.reset();
+//     } else {
+//       throw new Error('Server error');
+//     }
+//   } catch {
+//     status.className = 'form-status success';
+//     status.textContent = '✓ Message not sent! ';
+//     form.reset();
+//   }
+//   btn.disabled = false;
+//   btn.querySelector('span').textContent = 'Send Message';
+// });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+
+  if (!form) {
+    console.log("❌ contactForm not found");
+    return;
   }
-  btn.disabled = false;
-  btn.querySelector('span').textContent = 'Send Message';
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    console.log("📩 Form submitted");
+
+    const btn = document.getElementById("submitBtn");
+    const status = document.getElementById("formStatus");
+
+    btn.disabled = true;
+    btn.querySelector("span").textContent = "Sending...";
+
+    const body = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone?.value,
+      projectType: form.projectType?.value,
+      budget: form.budget?.value,
+      message: form.message.value,
+      collaboration: form.collaboration?.checked,
+    };
+
+    console.log("🚀 Payload:", body);
+
+    try {
+      const res = await fetch(`${API}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      console.log("📡 Response status:", res.status);
+
+      if (res.ok) {
+        status.className = "form-status success";
+        status.textContent = "✓ Message sent!";
+        form.reset();
+      } else {
+        const err = await res.text();
+        console.log("❌ Server error:", err);
+        throw new Error("Server error");
+      }
+
+    } catch (err) {
+      console.log("❌ Catch error:", err);
+
+      status.className = "form-status error";
+      status.textContent = "✗ Message not sent!";
+    }
+
+    btn.disabled = false;
+    btn.querySelector("span").textContent = "Send Message";
+  });
 });
+
+
+
+
 
 // ─── Command Palette ──────────────────────────────────────
 const cmdOverlay = document.getElementById('cmdOverlay');
