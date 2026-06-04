@@ -658,7 +658,7 @@ document.getElementById('projectForm')?.addEventListener('submit', async (e) => 
       const idx = projects.findIndex(p => p._id === editingProjectId);
       if (idx > -1) projects[idx] = updated?.project ?? updated;
     } else {
-      const created = await apiFetch('/projects', {
+      const created = await apiFetch('/projects/', {
         method: 'POST',
         body: JSON.stringify(payload),
       });
