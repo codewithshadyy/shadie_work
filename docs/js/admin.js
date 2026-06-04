@@ -399,7 +399,7 @@ const sections = {
 async function apiFetch(path, options = {}) {
   const headers = { 'Content-Type': 'application/json' };
   if (token) headers['Authorization'] = `Bearer ${token}`;
-  const res = await fetch(`${API}/${path}`, { ...options, headers: { ...headers, ...options.headers } });
+  const res = await fetch(`${API}${path}`, { ...options, headers: { ...headers, ...options.headers } });
   if (res.status === 401) {
     handleUnauthorized();
     throw new Error('Unauthorized');
