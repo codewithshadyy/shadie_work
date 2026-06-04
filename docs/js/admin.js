@@ -8,15 +8,15 @@ let token = localStorage.getItem('adminToken');
 // ─── Sample Data (when API unavailable) ───────────────────
 
 let projects = [
-  { _id: '1', title: 'MicroAuth Service', category: 'backend', description: 'JWT authentication microservice.', techStack: ['Node.js', 'Express', 'MongoDB'], tags: ['auth'], githubLink: 'https://github.com', liveLink: '', featured: true, imageUrl: 'https://picsum.photos/seed/auth2/600/400', createdAt: '2024-02-20' },
+  // { _id: '1', title: 'MicroAuth Service', category: 'backend', description: 'JWT authentication microservice.', techStack: ['Node.js', 'Express', 'MongoDB'], tags: ['auth'], githubLink: 'https://github.com', liveLink: '', featured: true, imageUrl: 'https://picsum.photos/seed/auth2/600/400', createdAt: '2024-02-20' },
   ];
 let experiences = [
    
-  { _id: '1', role: 'Backend Developer', company: 'BuildStack Technologies', duration: 'Jun 2021 – Dec 2022', responsibilities: ['Built SaaS platform APIs', 'Designed multi-tenant database schema'], technologies: ['Node.js', 'Express.js', 'MongoDB'] },
+  // { _id: '1', role: 'Backend Developer', company: 'BuildStack Technologies', duration: 'Jun 2021 – Dec 2022', responsibilities: ['Built SaaS platform APIs', 'Designed multi-tenant database schema'], technologies: ['Node.js', 'Express.js', 'MongoDB'] },
 ];
 let messages = [
-  { _id: '1', name: 'James Mwangi', email: 'james@finpay.com', projectType: 'API Development', budget: '$5,000–$15,000', message: 'Hi Alex, I need help building a payment API for our startup. Can we talk?', read: false, createdAt: new Date().toISOString() },
-  { _id: '2', name: 'Sarah Rahman', email: 'sarah@buildstack.io', projectType: 'System Design Consultation', budget: '$2,000–$5,000', message: 'Looking for an architect to review our microservices design before we scale.', read: true, createdAt: new Date(Date.now() - 86400000).toISOString() },
+//   { _id: '1', name: 'James Mwangi', email: 'james@finpay.com', projectType: 'API Development', budget: '$5,000–$15,000', message: 'Hi Alex, I need help building a payment API for our startup. Can we talk?', read: false, createdAt: new Date().toISOString() },
+//   { _id: '2', name: 'Sarah Rahman', email: 'sarah@buildstack.io', projectType: 'System Design Consultation', budget: '$2,000–$5,000', message: 'Looking for an architect to review our microservices design before we scale.', read: true, createdAt: new Date(Date.now() - 86400000).toISOString() },
 ];
 
 
