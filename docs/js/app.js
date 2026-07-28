@@ -461,7 +461,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    console.log("📩 Form submitted");
+    console.log(" Form submitted");
 
     const btn = document.getElementById("submitBtn");
     const status = document.getElementById("formStatus");
@@ -479,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
       collaboration: form.collaboration?.checked,
     };
 
-    console.log("🚀 Payload:", body);
+    console.log(" Payload:", body);
 
     try {
       const res = await fetch(`${API_BASE}/contact`, {
