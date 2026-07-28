@@ -488,7 +488,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(body),
       });
 
-      console.log("📡 Response status:", res.status);
+      console.log("Response status:", res.status);
 
       if (res.ok) {
         status.className = "form-status success";
@@ -496,12 +496,12 @@ document.addEventListener("DOMContentLoaded", () => {
         form.reset();
       } else {
         const err = await res.text();
-        console.log("❌ Server error:", err);
+        console.log(" Server error:", err);
         throw new Error("Server error");
       }
 
     } catch (err) {
-      console.log("❌ Catch error:", err);
+      console.log(" Catch error:", err);
 
       status.className = "form-status error";
       status.textContent = "✗ Message not sent!";
