@@ -727,6 +727,7 @@ document.getElementById('projectForm')?.addEventListener('submit', async (e) => 
 async function fetchExperiences() {
   try {
     const data = await apiFetch('/experiences');
+    
     experiences = Array.isArray(data) ? data : (data?.experiences ?? data?.data ?? []);
     loadExpTable();
   } catch (err) {
