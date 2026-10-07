@@ -142,10 +142,10 @@ initCanvas();
 
 // ─── Typed Text ───────────────────────────────────────────
 const titles = [
-  'Backend Engineer',
+  'Backend Developer',
   'API Architect',
   'System Design Enthusiast',
-  'Database Craftsman',
+  'Database Desisgner',
   'Performance Engineer',
 ];
 let ti = 0, ci = 0, deleting = false;
